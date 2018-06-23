@@ -46,6 +46,8 @@ $("<div>")
 $("#create-card").click(() => {
   const $newCard = $("<div>").addClass("card");
   $("<h4>").addClass("name").attr("id", "name-heading").appendTo($newCard);
+  $("<p>").addClass("position").attr("id", "position-heading").appendTo($newCard);
+  $("<p>").addClass("company").attr("id", "company-heading").appendTo($newCard);
   $newCard.appendTo($("#card-container"))
 })
 
@@ -66,10 +68,21 @@ $("body").on("click", "#name-heading", ()=> {
 // YOUR CHALLENGE 
 
 // In the event listener for creating a new card, add empty paragraph elements for position and company under the name h4
-
+$("#position-input").keydown(() => {
+  const textValue = $("#position-input").val()
+  $("#position-heading").text(textValue);
+})
+$("#company-input").keydown(() => {
+  const textValue = $("#company-input").val()
+  $("#company-heading").text(textValue);
+})
 // Add event listeners to the last two inputs. When you enter text in the inputs, the text in the card should change.
 
 // Add an event listener to the remove card button. When the button is clicked, the entire card should disappear. Experiment with the .hide() and .remove() methods. What's the difference between them? 
+
+$("#delete-card").on("click", () => {
+  $(".card:first-of-type").remove();
+})
 
 
 
